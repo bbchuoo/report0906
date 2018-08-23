@@ -2,7 +2,7 @@ var item2Layer = cc.Layer.extend({
     sprite:null,
     repeat:null,
     repeatRect:null,
-    itembg:null,
+    itembg1player:null,
     imgrect:new Array(9),
     px:null,
     py:null,
@@ -12,6 +12,9 @@ var item2Layer = cc.Layer.extend({
     turn:0,
     gameOver:false,
     array:['','','','','','','','',''],
+    lose:null,
+    win:null,
+
 
 
     ctor:function () {
@@ -30,12 +33,13 @@ var item2Layer = cc.Layer.extend({
     drawSegment(layer){
 
         //背景圖片
-        this.itembg = new cc.Sprite(res.itembg_jpg);
-        this.itembg.attr({
+        this.itembg1player = new cc.Sprite(res.itembg1player_jpg);
+        this.itembg1player.attr({
             x:cc.winSize.width/2,
             y:cc.winSize.height/2
         });
-        this.addChild(this.itembg);
+        this.addChild(this.itembg1player);
+
 
 
         //使用DrawNode(繪製結點)來繪製圖形
@@ -103,6 +107,28 @@ var item2Layer = cc.Layer.extend({
         var menu =new cc.Menu(item);
         this.addChild(menu);
 
+        //win
+
+        this.win = new cc.Sprite(res.win_png);
+        this.win.attr({
+            x:cc.winSize.width/2,
+            y:cc.winSize.height/2
+        });
+        this.addChild(this.win);
+        this.win.setVisible(false);
+        this.win.zIndex=9999;
+
+        //lose
+
+        this.lose = new cc.Sprite(res.lose_png);
+        this.lose.attr({
+            x:cc.winSize.width/2,
+            y:cc.winSize.height/2
+        });
+        this.addChild(this.lose);
+        this.lose.setVisible(false);
+        this.lose.zIndex=9999;
+
 
     },
     item:function(){
@@ -165,7 +191,7 @@ var item2Layer = cc.Layer.extend({
                         if (!layer.gameOver) {
 
                             if (layer.isClick[i] === false) {
-                                playRound(layer.imgrect[i], layer,layer.array[i]);
+                                 playRound1(layer.imgrect[i], layer,layer.array[i]);
                                 layer.isClick[i] = true;
 
                             }
@@ -195,6 +221,8 @@ var item2Layer = cc.Layer.extend({
         },this);
     },
     resetGame(layer){
+        layer.win.setVisible(false);
+        layer.lose.setVisible(false);
         layer.removeChild(layer.img1);
         layer.removeChild(layer.img2);
         layer.removeChild(layer.repeat);
@@ -230,7 +258,7 @@ var item2Scene = cc.Scene.extend({
 });
 
 
-function playRound(objDest,layer,array){
+function  playRound1(objDest,layer,array){
     if(layer.turn===0&&layer.gameOver===false){
 
 
@@ -244,6 +272,7 @@ function playRound(objDest,layer,array){
             ||(layer.array[2]==='O'&&layer.array[5]==='O'&&layer.array[8]==='O')
         ){
             alert("你贏了");
+            layer.win.setVisible(true);
             layer.gameOver=true;
             cc.log(' layer.gameOver=true;')
         }
@@ -471,6 +500,7 @@ function pandaCheck(objDest,layer,array){
         ||(layer.array[2]==='X'&&layer.array[5]==='X'&&layer.array[8]==='X')
     ){
         alert("你輸了");
+        layer.lose.setVisible(true);
         layer.gameOver=true;
         cc.log(' layer.gameOver=true;')
     }

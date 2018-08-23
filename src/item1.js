@@ -30,6 +30,8 @@ var item1Layer = cc.Layer.extend({
     panda6:null,
     panda7:null,
     panda8:null,
+    giraffewin:null,
+    pandawin:null,
 
     ctor:function () {
 
@@ -120,22 +122,33 @@ var item1Layer = cc.Layer.extend({
         var menu =new cc.Menu(item);
         this.addChild(menu);
 
-        // var item = new cc.MenuItemFont("repeat",this.item,this);
-        // item.attr({x:200,y:-225});
-        // item.setFontSize(49);
-        //
-        // var menu = new cc.Menu(item);
-        // this.addChild(menu);
+        //giraffewin
+
+        this.giraffewin = new cc.Sprite(res.giraffewin_png);
+        this.giraffewin.attr({
+            x:cc.winSize.width/2,
+            y:cc.winSize.height/2
+        });
+        this.addChild(this.giraffewin);
+        this.giraffewin.setVisible(false);
+        this.giraffewin.zIndex=9999;
+
+        //pandawin
+
+        this.pandawin = new cc.Sprite(res.pandawin_png);
+        this.pandawin.attr({
+            x:cc.winSize.width/2,
+            y:cc.winSize.height/2
+        });
+        this.addChild(this.pandawin);
+        this.pandawin.setVisible(false);
+        this.pandawin.zIndex=9999;
+
     },
     item:function(){
         cc.director.pushScene(new menuScene());
 
     },
-
-        // back: function () {
-        //     cc.director.pushScene(new menuScene());
-        // },
-
 
 
     setImg:function(layer){
@@ -356,6 +369,7 @@ var item1Layer = cc.Layer.extend({
                                 playRound(layer.imgrect[i], layer);
                                 layer.isClick[i] = true;
 
+
                                     //長頸鹿判斷
 
                                     if (layer.giraffe === 0 && layer.giraffe1 === 1
@@ -363,7 +377,7 @@ var item1Layer = cc.Layer.extend({
                                         alert("giraffe贏了");
                                         layer.gameOver = true;
                                         layer.deuceCheck=false;
-
+                                        layer.giraffewin.setVisible(true);
                                     }
 
 
@@ -372,7 +386,7 @@ var item1Layer = cc.Layer.extend({
                                     alert("giraffe贏了");
                                     layer.gameOver = true;
                                     layer.deuceCheck=false;
-
+                                    layer.giraffewin.setVisible(true);
                                 }
                                     if (layer.giraffe6 === 6 && layer.giraffe7 === 7
                                         && layer.giraffe8 === 8
@@ -380,7 +394,7 @@ var item1Layer = cc.Layer.extend({
                                         alert("giraffe贏了");
                                         layer.gameOver = true;
                                         layer.deuceCheck=false;
-
+                                        layer.giraffewin.setVisible(true);
                                     }
 
                                     //斜對角
@@ -390,7 +404,7 @@ var item1Layer = cc.Layer.extend({
                                         alert("giraffe贏了");
                                         layer.gameOver = true;
                                         layer.deuceCheck=false;
-
+                                        layer.giraffewin.setVisible(true);
                                     }
                                     if (layer.giraffe2 === 2 && layer.giraffe4 === 4
                                         && layer.giraffe6 === 6
@@ -398,7 +412,7 @@ var item1Layer = cc.Layer.extend({
                                         alert("giraffe贏了");
                                         layer.gameOver = true;
                                         layer.deuceCheck=false;
-
+                                        layer.giraffewin.setVisible(true);
                                     }
                                     //直條
                                     if (layer.giraffe === 0 && layer.giraffe3 === 3
@@ -407,7 +421,7 @@ var item1Layer = cc.Layer.extend({
                                         alert("giraffe贏了");
                                         layer.gameOver = true;
                                         layer.deuceCheck=false;
-
+                                        layer.giraffewin.setVisible(true);
                                     }
 
                                     if (layer.giraffe1 === 1 && layer.giraffe4 === 4
@@ -416,7 +430,7 @@ var item1Layer = cc.Layer.extend({
                                         alert("giraffe贏了");
                                         layer.gameOver = true;
                                         layer.deuceCheck=false;
-
+                                        layer.giraffewin.setVisible(true);
                                     }
 
                                     if (layer.giraffe2 === 2 && layer.giraffe5 === 5
@@ -425,7 +439,7 @@ var item1Layer = cc.Layer.extend({
                                         alert("giraffe贏了");
                                         layer.gameOver = true;
                                         layer.deuceCheck=false;
-
+                                        layer.giraffewin.setVisible(true);
                                     }
                                     // -------------------熊貓判斷---------------------
 
@@ -435,6 +449,7 @@ var item1Layer = cc.Layer.extend({
                                         alert("panda贏了");
                                         layer.gameOver = true;
                                         layer.deuceCheck=false;
+                                        layer.pandawin.setVisible(true);
                                     }
                                     if (layer.panda3 === 3 && layer.panda4 === 4
                                         && layer.panda5 === 5
@@ -442,6 +457,7 @@ var item1Layer = cc.Layer.extend({
                                         alert("panda贏了");
                                         layer.gameOver = true;
                                         layer.deuceCheck=false;
+                                        layer.pandawin.setVisible(true);
                                     }
                                     if (layer.panda6 === 6 && layer.panda7 === 7
                                         && layer.panda8 === 8
@@ -449,6 +465,7 @@ var item1Layer = cc.Layer.extend({
                                         alert("panda贏了");
                                         layer.gameOver = true;
                                         layer.deuceCheck=false;
+                                        layer.pandawin.setVisible(true);
                                     }
 
 
@@ -460,6 +477,7 @@ var item1Layer = cc.Layer.extend({
                                         alert("panda贏了");
                                         layer.gameOver = true;
                                         layer.deuceCheck=false;
+                                        layer.pandawin.setVisible(true);
                                     }
                                     if (layer.panda2 === 2 && layer.panda4 === 4
                                         && layer.panda6 === 6
@@ -467,6 +485,7 @@ var item1Layer = cc.Layer.extend({
                                         alert("panda贏了");
                                         layer.gameOver = true;
                                         layer.deuceCheck=false;
+                                        layer.pandawin.setVisible(true);
                                     }
 
                                     //直條
@@ -477,6 +496,7 @@ var item1Layer = cc.Layer.extend({
                                         alert("panda贏了");
                                         layer.gameOver = true;
                                         layer.deuceCheck=false;
+                                        layer.pandawin.setVisible(true);
                                     }
                                     if (layer.panda1 === 1 && layer.panda4 === 4
                                         && layer.panda7 === 7
@@ -484,6 +504,7 @@ var item1Layer = cc.Layer.extend({
                                         alert("panda贏了");
                                         layer.gameOver = true;
                                         layer.deuceCheck=false;
+                                        layer.pandawin.setVisible(true);
                                     }
                                     if (layer.panda2 === 2 && layer.panda5 === 5
                                         && layer.panda8 === 8
@@ -491,12 +512,14 @@ var item1Layer = cc.Layer.extend({
                                         alert("panda贏了");
                                         layer.gameOver = true;
                                         layer.deuceCheck=false;
+                                        layer.pandawin.setVisible(true);
 
                                     }
                             }
                             else{
                                 alert("這格被點過了");
                                 layer.isClick[i] = true;
+
                             }
                         }
                        else{
@@ -517,12 +540,10 @@ var item1Layer = cc.Layer.extend({
         },this);
     },
     resetGame(layer){
+        layer.giraffewin.setVisible(false);
+        layer.pandawin.setVisible(false);
         layer.removeChild(layer.img1);
         layer.removeChild(layer.img2);
-        // layer.removeChild(stick1);
-        // layer.removeChild(stick2);
-        // layer.removeChild(stick3);
-        // layer.removeChild(stick4);
         layer.removeChild(layer.repeat);
         layer.isClick=[];
         layer.isClick[0]=false;

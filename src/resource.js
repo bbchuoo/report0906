@@ -31,6 +31,13 @@ var res = {
     repeat_png:"res/repeat.png",
     v5_mp3:"res/v5.mp3",
     home_png:"res/home.png",
+    itembg1player_jpg:"res/itembg1player.jpg",
+    giraffebg_png : "res/giraffebg.png",
+    pandabg_png : "res/pandabg.png",
+    win_png : "res/win.png",
+    lose_png : "res/lose.png",
+    giraffewin_png : "res/giraffewin.png",
+    pandawin_png : "res/pandawin.png",
 
 };
 
