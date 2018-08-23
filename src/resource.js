@@ -28,6 +28,9 @@ var res = {
     giraffe_png : "res/giraffe.png",
     panda_png : "res/panda.png",
     itembg_jpg : "res/itembg.jpg",
+    repeat_png:"res/repeat.png",
+    v5_mp3:"res/v5.mp3",
+    home_png:"res/home.png",
 
 };
 
