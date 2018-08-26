@@ -354,15 +354,26 @@ function  playRound1(objDest,layer,array){
 
         }
         //斜對角
-        else if(layer.array[0]==='O'&&layer.array[4]==='O'&&layer.array[8]===''){
+        else if(layer.array[0]==='O'&&layer.array[4]==='O'&&layer.array[8]==='') {
             layer.isClick[8] = true;
-            layer.array[8]='X';
+            layer.array[8] = 'X';
             layer.img2 = new cc.Sprite(res.panda_png);
-            layer.img2.x =layer.imgrect[8].x + layer.imgrect[8].width / 2;
+            layer.img2.x = layer.imgrect[8].x + layer.imgrect[8].width / 2;
             layer.img2.y = layer.imgrect[8].y + layer.imgrect[8].height / 2;
             layer.addChild(layer.img2);
-            pandaCheck(objDest,layer,array);
+            pandaCheck(objDest, layer, array);
             layer.turn = 0;
+        }
+
+        else if(layer.array[8]==='O'&&layer.array[4]==='O'&&layer.array[0]===''){
+                layer.isClick[0] = true;
+                layer.array[0]='X';
+                layer.img2 = new cc.Sprite(res.panda_png);
+                layer.img2.x =layer.imgrect[0].x + layer.imgrect[0].width / 2;
+                layer.img2.y = layer.imgrect[0].y + layer.imgrect[0].height / 2;
+                layer.addChild(layer.img2);
+                pandaCheck(objDest,layer,array);
+                layer.turn = 0;
 
         }
         else if(layer.array[2]==='O'&&layer.array[4]==='O'&&layer.array[6]===''){
@@ -371,6 +382,17 @@ function  playRound1(objDest,layer,array){
             layer.img2 = new cc.Sprite(res.panda_png);
             layer.img2.x =layer.imgrect[6].x + layer.imgrect[6].width / 2;
             layer.img2.y = layer.imgrect[6].y + layer.imgrect[6].height / 2;
+            layer.addChild(layer.img2);
+            pandaCheck(objDest,layer,array);
+            layer.turn = 0;
+
+        }
+        else if(layer.array[6]==='O'&&layer.array[4]==='O'&&layer.array[2]===''){
+            layer.isClick[2] = true;
+            layer.array[2]='X';
+            layer.img2 = new cc.Sprite(res.panda_png);
+            layer.img2.x =layer.imgrect[2].x + layer.imgrect[2].width / 2;
+            layer.img2.y = layer.imgrect[2].y + layer.imgrect[2].height / 2;
             layer.addChild(layer.img2);
             pandaCheck(objDest,layer,array);
             layer.turn = 0;
