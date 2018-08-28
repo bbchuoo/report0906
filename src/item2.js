@@ -191,7 +191,7 @@ var item2Layer = cc.Layer.extend({
                         if (!layer.gameOver) {
 
                             if (layer.isClick[i] === false) {
-                                 playRound1(layer.imgrect[i], layer,layer.array[i]);
+                                playRound1(layer.imgrect[i], layer,layer.array[i]);
                                 layer.isClick[i] = true;
 
                             }
@@ -283,89 +283,17 @@ function  playRound1(objDest,layer,array){
         layer.addChild(layer.img1);
         layer.turn=1;
         cc.log("換長頸鹿");
-    if(layer.turn===1&&layer.gameOver===false) {
+        if(layer.turn===1&&layer.gameOver===false) {
 
 
-        //平行
-        if(layer.array[0]==='O'&&layer.array[1]==='O'&&layer.array[2]===''){
-            layer.isClick[2] = true;
-            layer.array[2]='X';
-            layer.img2 = new cc.Sprite(res.panda_png);
-            layer.img2.x =layer.imgrect[2].x + layer.imgrect[2].width / 2;
-            layer.img2.y = layer.imgrect[2].y + layer.imgrect[2].height / 2;
-            layer.addChild(layer.img2);
-            pandaCheck(objDest,layer,array);
-            layer.turn = 0;
 
-        }
-        else if(layer.array[1]==='O'&&layer.array[2]==='O'&&layer.array[0]===''){
-            layer.isClick[0] = true;
-            layer.array[0]='X';
-            layer.img2 = new cc.Sprite(res.panda_png);
-            layer.img2.x =layer.imgrect[0].x + layer.imgrect[0].width / 2;
-            layer.img2.y = layer.imgrect[0].y + layer.imgrect[0].height / 2;
-            layer.addChild(layer.img2);
-            pandaCheck(objDest,layer,array);
-            layer.turn = 0;
 
-        }
-        else if(layer.array[3]==='O'&&layer.array[4]==='O'&&layer.array[5]===''){
-            layer.isClick[5] = true;
-            layer.array[5]='X';
-            layer.img2 = new cc.Sprite(res.panda_png);
-            layer.img2.x =layer.imgrect[5].x + layer.imgrect[5].width / 2;
-            layer.img2.y = layer.imgrect[5].y + layer.imgrect[5].height / 2;
-            layer.addChild(layer.img2);
-            pandaCheck(objDest,layer,array);
-            layer.turn = 0;
-
-        }
-        else if(layer.array[4]==='O'&&layer.array[5]==='O'&&layer.array[3]===''){
-            layer.isClick[3] = true;
-            layer.array[3]='X';
-            layer.img2 = new cc.Sprite(res.panda_png);
-            layer.img2.x =layer.imgrect[3].x + layer.imgrect[3].width / 2;
-            layer.img2.y = layer.imgrect[3].y + layer.imgrect[3].height / 2;
-            layer.addChild(layer.img2);
-            pandaCheck(objDest,layer,array);
-            layer.turn = 0;
-
-        }
-       else if(layer.array[6]==='O'&&layer.array[7]==='O'&&layer.array[8]===''){
-            layer.isClick[8] = true;
-            layer.array[8]='X';
-            layer.img2 = new cc.Sprite(res.panda_png);
-            layer.img2.x =layer.imgrect[8].x + layer.imgrect[8].width / 2;
-            layer.img2.y = layer.imgrect[8].y + layer.imgrect[8].height / 2;
-            layer.addChild(layer.img2);
-            pandaCheck(objDest,layer,array);
-            layer.turn = 0;
-
-        }
-        else if(layer.array[7]==='O'&&layer.array[8]==='O'&&layer.array[6]===''){
-            layer.isClick[6] = true;
-            layer.array[6]='X';
-            layer.img2 = new cc.Sprite(res.panda_png);
-            layer.img2.x =layer.imgrect[6].x + layer.imgrect[6].width / 2;
-            layer.img2.y = layer.imgrect[6].y + layer.imgrect[6].height / 2;
-            layer.addChild(layer.img2);
-            pandaCheck(objDest,layer,array);
-            layer.turn = 0;
-
-        }
-        //斜對角
-        else if(layer.array[0]==='O'&&layer.array[4]==='O'&&layer.array[8]==='') {
-            layer.isClick[8] = true;
-            layer.array[8] = 'X';
-            layer.img2 = new cc.Sprite(res.panda_png);
-            layer.img2.x = layer.imgrect[8].x + layer.imgrect[8].width / 2;
-            layer.img2.y = layer.imgrect[8].y + layer.imgrect[8].height / 2;
-            layer.addChild(layer.img2);
-            pandaCheck(objDest, layer, array);
-            layer.turn = 0;
-        }
-
-        else if(layer.array[8]==='O'&&layer.array[4]==='O'&&layer.array[0]===''){
+            //什麼時候要"X" 第0個
+            // 12的時候 橫的 36 直的 48斜對角的時候
+            if(layer.array[1]==='O'&&layer.array[2]==='O'&&layer.array[0]===''
+                || layer.array[6]==='O'&&layer.array[3]==='O'&&layer.array[0]===''
+                ||layer.array[8]==='O'&&layer.array[4]==='O'&&layer.array[0]===''
+            ){
                 layer.isClick[0] = true;
                 layer.array[0]='X';
                 layer.img2 = new cc.Sprite(res.panda_png);
@@ -375,102 +303,145 @@ function  playRound1(objDest,layer,array){
                 pandaCheck(objDest,layer,array);
                 layer.turn = 0;
 
-        }
-        else if(layer.array[2]==='O'&&layer.array[4]==='O'&&layer.array[6]===''){
-            layer.isClick[6] = true;
-            layer.array[6]='X';
-            layer.img2 = new cc.Sprite(res.panda_png);
-            layer.img2.x =layer.imgrect[6].x + layer.imgrect[6].width / 2;
-            layer.img2.y = layer.imgrect[6].y + layer.imgrect[6].height / 2;
-            layer.addChild(layer.img2);
-            pandaCheck(objDest,layer,array);
-            layer.turn = 0;
+            }
+            //什麼時候要"X" 第1個
+            // 02的時候 橫的間隔 47 直的
 
-        }
-        else if(layer.array[6]==='O'&&layer.array[4]==='O'&&layer.array[2]===''){
-            layer.isClick[2] = true;
-            layer.array[2]='X';
-            layer.img2 = new cc.Sprite(res.panda_png);
-            layer.img2.x =layer.imgrect[2].x + layer.imgrect[2].width / 2;
-            layer.img2.y = layer.imgrect[2].y + layer.imgrect[2].height / 2;
-            layer.addChild(layer.img2);
-            pandaCheck(objDest,layer,array);
-            layer.turn = 0;
+            else if(layer.array[4]==='O'&&layer.array[7]==='O'&&layer.array[1]===''||
+                layer.array[0]==='O'&&layer.array[2]==='O'&&layer.array[1]===''){
+                layer.isClick[1] = true;
+                layer.array[1]='X';
+                layer.img2 = new cc.Sprite(res.panda_png);
+                layer.img2.x =layer.imgrect[1].x + layer.imgrect[1].width / 2;
+                layer.img2.y = layer.imgrect[1].y + layer.imgrect[1].height / 2;
+                layer.addChild(layer.img2);
+                pandaCheck(objDest,layer,array);
+                layer.turn = 0;
 
-        }
-        // //直的
-        else if(layer.array[0]==='O'&&layer.array[3]==='O'&&layer.array[6]===''){
-            layer.isClick[6] = true;
-            layer.array[6]='X';
-            layer.img2 = new cc.Sprite(res.panda_png);
-            layer.img2.x =layer.imgrect[6].x + layer.imgrect[6].width / 2;
-            layer.img2.y = layer.imgrect[6].y + layer.imgrect[6].height / 2;
-            layer.addChild(layer.img2);
-            pandaCheck(objDest,layer,array);
-            layer.turn = 0;
+            }
 
-        }
-        else if(layer.array[6]==='O'&&layer.array[3]==='O'&&layer.array[0]===''){
-            layer.isClick[0] = true;
-            layer.array[0]='X';
-            layer.img2 = new cc.Sprite(res.panda_png);
-            layer.img2.x =layer.imgrect[0].x + layer.imgrect[0].width / 2;
-            layer.img2.y = layer.imgrect[0].y + layer.imgrect[0].height / 2;
-            layer.addChild(layer.img2);
-            pandaCheck(objDest,layer,array);
-            layer.turn = 0;
+            //什麼時候要"X" 第2個
+            // 01的時候 橫 58直的 46斜的
+            else if(layer.array[0]==='O'&&layer.array[1]==='O'&&layer.array[2]===''
+                || layer.array[6]==='O'&&layer.array[4]==='O'&&layer.array[2]===''
+                || layer.array[5]==='O'&&layer.array[8]==='O'&&layer.array[2]===''){
+                layer.isClick[2] = true;
+                layer.array[2]='X';
+                layer.img2 = new cc.Sprite(res.panda_png);
+                layer.img2.x =layer.imgrect[2].x + layer.imgrect[2].width / 2;
+                layer.img2.y = layer.imgrect[2].y + layer.imgrect[2].height / 2;
+                layer.addChild(layer.img2);
+                pandaCheck(objDest,layer,array);
+                layer.turn = 0;
 
-        }
-        else if(layer.array[1]==='O'&&layer.array[4]==='O'&&layer.array[7]===''){
-            layer.isClick[7] = true;
-            layer.array[7]='X';
-            layer.img2 = new cc.Sprite(res.panda_png);
-            layer.img2.x =layer.imgrect[7].x + layer.imgrect[7].width / 2;
-            layer.img2.y = layer.imgrect[7].y + layer.imgrect[7].height / 2;
-            layer.addChild(layer.img2);
-            pandaCheck(objDest,layer,array);
-            layer.turn = 0;
+            }
 
-        }
-        else if(layer.array[4]==='O'&&layer.array[7]==='O'&&layer.array[1]===''){
-            layer.isClick[1] = true;
-            layer.array[1]='X';
-            layer.img2 = new cc.Sprite(res.panda_png);
-            layer.img2.x =layer.imgrect[1].x + layer.imgrect[1].width / 2;
-            layer.img2.y = layer.imgrect[1].y + layer.imgrect[1].height / 2;
-            layer.addChild(layer.img2);
-            pandaCheck(objDest,layer,array);
-            layer.turn = 0;
+            //什麼時候要"X" 第3個
+            // 06直的間隔 45橫的
+            else if(layer.array[4]==='O'&&layer.array[5]==='O'&&layer.array[3]===''
+                || layer.array[0]==='O'&&layer.array[6]==='O'&&layer.array[3]===''
+            ){
+                layer.isClick[3] = true;
+                layer.array[3]='X';
+                layer.img2 = new cc.Sprite(res.panda_png);
+                layer.img2.x =layer.imgrect[3].x + layer.imgrect[3].width / 2;
+                layer.img2.y = layer.imgrect[3].y + layer.imgrect[3].height / 2;
+                layer.addChild(layer.img2);
+                pandaCheck(objDest,layer,array);
+                layer.turn = 0;
 
-        }
-        else if(layer.array[2]==='O'&&layer.array[5]==='O'&&layer.array[8]===''){
-            layer.isClick[8] = true;
-            layer.array[8]='X';
-            layer.img2 = new cc.Sprite(res.panda_png);
-            layer.img2.x =layer.imgrect[8].x + layer.imgrect[8].width / 2;
-            layer.img2.y = layer.imgrect[8].y + layer.imgrect[8].height / 2;
-            layer.addChild(layer.img2);
-            pandaCheck(objDest,layer,array);
-            layer.turn = 0;
+            }
+            //什麼時候要"X" 第4個
+            //17間隔直的  35間隔橫的 26間隔對角線 08間隔對角線
+            else if(layer.array[1]==='O'&&layer.array[7]==='O'&&layer.array[4]===''
+                || layer.array[3]==='O'&&layer.array[5]==='O'&&layer.array[4]===''
+                || layer.array[0]==='O'&&layer.array[8]==='O'&&layer.array[4]===''
+                || layer.array[2]==='O'&&layer.array[6]==='O'&&layer.array[4]===''
+            ){
+                layer.isClick[4] = true;
+                layer.array[4]='X';
+                layer.img2 = new cc.Sprite(res.panda_png);
+                layer.img2.x =layer.imgrect[4].x + layer.imgrect[4].width / 2;
+                layer.img2.y = layer.imgrect[4].y + layer.imgrect[4].height / 2;
+                layer.addChild(layer.img2);
+                pandaCheck(objDest,layer,array);
+                layer.turn = 0;
+            }
+            //什麼時候要"X" 第5個
+            //34橫的 28間隔直
 
-        }
-        else if(layer.array[5]==='O'&&layer.array[8]==='O'&&layer.array[2]===''){
-            layer.isClick[2] = true;
-            layer.array[2]='X';
-            layer.img2 = new cc.Sprite(res.panda_png);
-            layer.img2.x =layer.imgrect[2].x + layer.imgrect[2].width / 2;
-            layer.img2.y = layer.imgrect[2].y + layer.imgrect[2].height / 2;
-            layer.addChild(layer.img2);
-            pandaCheck(objDest,layer,array);
-            layer.turn = 0;
+            else if(layer.array[3]==='O'&&layer.array[4]==='O'&&layer.array[5]===''
+                || layer.array[2]==='O'&&layer.array[8]==='O'&&layer.array[5]===''
+            ){
+                layer.isClick[5] = true;
+                layer.array[5]='X';
+                layer.img2 = new cc.Sprite(res.panda_png);
+                layer.img2.x =layer.imgrect[5].x + layer.imgrect[5].width / 2;
+                layer.img2.y = layer.imgrect[5].y + layer.imgrect[5].height / 2;
+                layer.addChild(layer.img2);
+                pandaCheck(objDest,layer,array);
+                layer.turn = 0;
 
-        }
+            }
+            //什麼時候要"X" 第6個
+            //78橫的 03直 24對角線
 
-        else{
-            random(objDest,layer,array);
-            layer.turn = 0;
+            else if(layer.array[7]==='O'&&layer.array[8]==='O'&&layer.array[6]===''
+                || layer.array[2]==='O'&&layer.array[4]==='O'&&layer.array[6]===''
+                || layer.array[0]==='O'&&layer.array[3]==='O'&&layer.array[6]===''
+            ){
+                layer.isClick[6] = true;
+                layer.array[6]='X';
+                layer.img2 = new cc.Sprite(res.panda_png);
+                layer.img2.x =layer.imgrect[6].x + layer.imgrect[6].width / 2;
+                layer.img2.y = layer.imgrect[6].y + layer.imgrect[6].height / 2;
+                layer.addChild(layer.img2);
+                pandaCheck(objDest,layer,array);
+                layer.turn = 0;
 
-        }
+            }
+
+            //什麼時候要"X" 第7個
+            //68間隔橫的 14直
+
+
+            else if(layer.array[1]==='O'&&layer.array[4]==='O'&&layer.array[7]===''
+                ||layer.array[6]==='O'&&layer.array[8]==='O'&&layer.array[7]===''
+            ){
+                layer.isClick[7] = true;
+                layer.array[7]='X';
+                layer.img2 = new cc.Sprite(res.panda_png);
+                layer.img2.x =layer.imgrect[7].x + layer.imgrect[7].width / 2;
+                layer.img2.y = layer.imgrect[7].y + layer.imgrect[7].height / 2;
+                layer.addChild(layer.img2);
+                pandaCheck(objDest,layer,array);
+                layer.turn = 0;
+
+            }
+
+            //什麼時候要"X" 第8個
+            //67橫的 25直 04對角線
+            else if(layer.array[6]==='O'&&layer.array[7]==='O'&&layer.array[8]===''
+                || layer.array[0]==='O'&&layer.array[4]==='O'&&layer.array[8]===''
+                ||layer.array[2]==='O'&&layer.array[5]==='O'&&layer.array[8]===''
+            ){
+                layer.isClick[8] = true;
+                layer.array[8]='X';
+                layer.img2 = new cc.Sprite(res.panda_png);
+                layer.img2.x =layer.imgrect[8].x + layer.imgrect[8].width / 2;
+                layer.img2.y = layer.imgrect[8].y + layer.imgrect[8].height / 2;
+                layer.addChild(layer.img2);
+                pandaCheck(objDest,layer,array);
+                layer.turn = 0;
+
+            }
+
+            else{
+                random(objDest,layer,array);
+                layer.turn = 0;
+            }
+
+
 
 
 
