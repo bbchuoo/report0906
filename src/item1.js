@@ -223,6 +223,14 @@ var item1Layer = cc.Layer.extend({
                                     layer.pandawin.setVisible(true);
                                     layer.gameOver=true;
                                 }
+                                else if(layer.array[0]!==''&&layer.array[1]!==''&&layer.array[2]!==''&&
+                                    layer.array[3]!==''&&layer.array[4]!==''&&layer.array[5]!==''&&
+                                    layer.array[6]!==''&&layer.array[7]!==''&&layer.array[8]!==''
+                                ){
+                                    alert('平手');
+                                    return  layer.gameOver=true;
+
+                                }
 
                             }
                             else{

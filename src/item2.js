@@ -285,11 +285,37 @@ function  playRound1(objDest,layer,array) {
        // cc.log("換長頸鹿");
         if (layer.turn === 1 && layer.gameOver === false) {
 
+            //什麼時候要"X" 第6個
+            //78橫的 03直 24對角線
+
+         if (layer.array[7] === 'O' && layer.array[8] === 'O' && layer.array[6] === ''
+                || layer.array[2] === 'O' && layer.array[4] === 'O' && layer.array[6] === ''
+                || layer.array[0] === 'O' && layer.array[3] === 'O' && layer.array[6] === ''
+            || layer.array[7] === 'X' && layer.array[8] === 'X' && layer.array[6] === ''
+             || layer.array[2] === 'X' && layer.array[4] === 'X' && layer.array[6] === ''
+             || layer.array[0] === 'X' && layer.array[3] === 'X' && layer.array[6] ===''
+         ) {
+                printImg(objDest, layer, 6);
+                pandaCheck(objDest, layer, array);
+
+            }
+         //什麼時候要"X" 第8個
+         //67橫的 25直 04對角線
+         else if (layer.array[6] === 'O' && layer.array[7] === 'O' && layer.array[8] === ''
+             || layer.array[0] === 'O' && layer.array[4] === 'O' && layer.array[8] === ''
+             || layer.array[2] === 'O' && layer.array[5] === 'O' && layer.array[8] === ''
+             || layer.array[6] === 'X' && layer.array[7] === 'X' && layer.array[8] === ''
+             || layer.array[0] === 'X' && layer.array[4] === 'X' && layer.array[8] === ''
+             || layer.array[2] === 'X' && layer.array[5] === 'X' && layer.array[8] === ''
+         ) {
+             printImg(objDest, layer, 8);
+             pandaCheck(objDest, layer, array);
+         }
 
 
-            //什麼時候要"X" 第0個
+         //什麼時候要"X" 第0個
             // 12的時候 橫的 36 直的 48斜對角的時候
-            if (layer.array[1] === 'O' && layer.array[2] === 'O' && layer.array[0] === ''
+            else if (layer.array[1] === 'O' && layer.array[2] === 'O' && layer.array[0] === ''
                 || layer.array[6] === 'O' && layer.array[3] === 'O' && layer.array[0] === ''
                 || layer.array[8] === 'O' && layer.array[4] === 'O' && layer.array[0] === ''
            ||layer.array[1] === 'X' && layer.array[2] === 'X' && layer.array[0] === ''
@@ -378,40 +404,7 @@ function  playRound1(objDest,layer,array) {
                 pandaCheck(objDest, layer, array);
 
             }
-            //什麼時候要"X" 第6個
-            //78橫的 03直 24對角線
-
-            else if (layer.array[7] === 'O' && layer.array[8] === 'O' && layer.array[6] === ''
-                || layer.array[2] === 'O' && layer.array[4] === 'O' && layer.array[6] === ''
-                || layer.array[0] === 'O' && layer.array[3] === 'O' && layer.array[6] === ''
-            ||layer.array[7] === 'X' && layer.array[8] === 'X' && layer.array[6] === ''
-                || layer.array[2] === 'X' && layer.array[4] === 'X' && layer.array[6] === ''
-                || layer.array[0] === 'X' && layer.array[3] === 'X' && layer.array[6] ===''
-            ) {
-                printImg(objDest, layer, 6);
-                pandaCheck(objDest, layer, array);
-
-            }
-
-
-
-            //什麼時候要"X" 第8個
-            //67橫的 25直 04對角線
-            else if (layer.array[6] === 'O' && layer.array[7] === 'O' && layer.array[8] === ''
-                || layer.array[0] === 'O' && layer.array[4] === 'O' && layer.array[8] === ''
-                || layer.array[2] === 'O' && layer.array[5] === 'O' && layer.array[8] === ''
-                || layer.array[6] === 'X' && layer.array[7] === 'X' && layer.array[8] === ''
-                || layer.array[0] === 'X' && layer.array[4] === 'X' && layer.array[8] === ''
-                || layer.array[2] === 'X' && layer.array[5] === 'X' && layer.array[8] === ''
-            ) {
-                printImg(objDest, layer, 8);
-                pandaCheck(objDest, layer, array);
-            }
-
-
-
-
-            //第一手下在中間
+        //第一手下在中間
             else if (layer.array[4] === 'O') {
 
                 printImg(objDest, layer, 0);
