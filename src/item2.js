@@ -466,7 +466,9 @@ function random(objDest,layer,array){
         layer.array[3]!==''&&layer.array[4]!==''&&layer.array[5]!==''&&
         layer.array[6]!==''&&layer.array[7]!==''&&layer.array[8]!==''
     ){
-        return  cc.log('結束了');
+        alert('平手');
+        return  layer.gameOver=true;
+
     }
     else{
         layer.turn = 1; //繼續取亂數
