@@ -60,6 +60,10 @@ var menuLayer = cc.Layer.extend({
         item2.attr({x:0,y:-100});
         item2.fontSize=49;
 
+
+
+
+
         var menu = new cc.Menu(item1,item2);
         this.addChild(menu);
     },
@@ -71,6 +75,8 @@ var menuLayer = cc.Layer.extend({
         cc.director.pushScene(new item2Scene());
 
     },
+
+
     update: function(){
         var giraffebg = this.getChildByName("giraffebg");
             giraffebg.rotation += this.dx;

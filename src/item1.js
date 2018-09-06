@@ -8,30 +8,12 @@ var item1Layer = cc.Layer.extend({
     py:null,
     img1:null,
     img2:null,
-    initgame:null,
     isClick:new Array(9),
     turn:0,
     gameOver:false,
-    giraffe:null,
-    giraffe1:null,
-    giraffe2:null,
-    giraffe3:null,
-    giraffe4:null,
-    giraffe5:null,
-    giraffe6:null,
-    giraffe7:null,
-    giraffe8:null,
-    panda:null,
-    panda1:null,
-    panda2:null,
-    panda3:null,
-    panda4:null,
-    panda5:null,
-    panda6:null,
-    panda7:null,
-    panda8:null,
     giraffewin:null,
     pandawin:null,
+    array:['','','','','','','','',''],
 
     ctor:function () {
 
@@ -192,173 +174,11 @@ var item1Layer = cc.Layer.extend({
                     layer.resetGame(layer);
                 }
 
-                    for (let i=0;i < layer.imgrect.length;i++) {
+                for (let i=0;i < layer.imgrect.length;i++) {
 
                     if (cc.rectContainsPoint(layer.imgrect[i], point)) {
 
 
-
-                        if (layer.turn == 0) {
-
-                            switch (i) {
-                                case 0 :
-                                    if(layer.panda===0){
-                                        layer.giraffe = null;
-                                    }
-                                    else{
-                                        layer.giraffe = 0;
-                                    }
-                                    break;
-                                case 1 :
-                                    if(layer.panda1===1){
-                                        layer.giraffe1 = null;
-                                    }
-                                    else{
-                                        layer.giraffe1 = 1;
-                                    }
-                                    break;
-                                case 2 :
-                                    if(layer.panda2===2){
-                                        layer.giraffe2 = null;
-                                    }
-                                    else{
-                                        layer.giraffe2 = 2;
-                                    }
-                                    break;
-                                case 3 :
-                                    if(layer.panda3===3){
-                                        layer.giraffe3 = null;
-                                    }
-                                    else{
-                                        layer.giraffe3 = 3;
-                                    }
-                                    break;
-                                case 4 :
-                                    if(layer.panda4===4){
-                                        layer.giraffe4 = null;
-                                    }
-                                    else{
-                                        layer.giraffe4 = 4;
-                                    }
-                                    break;
-                                case 5 :
-                                    if(layer.panda5===5){
-                                        layer.giraffe5 = null;
-                                    }
-                                    else{
-                                        layer.giraffe5 = 5;
-                                    }
-                                    break;
-                                case 6 :
-                                    if(layer.panda6===6){
-                                        layer.giraffe6 = null;
-                                    }
-                                    else{
-                                        layer.giraffe6 = 6;
-                                    }
-                                    break;
-                                case 7 :
-                                    if(layer.panda7===7){
-                                        layer.giraffe7 = null;
-                                    }
-                                    else{
-                                        layer.giraffe7 = 7;
-
-                                    }
-                                    break;
-                                case 8 :
-                                    if(layer.panda8===8){
-                                        layer.giraffe8 = null;
-                                    }
-                                    else{
-                                        layer.giraffe8 = 8;
-                                    }
-                                    break;
-
-                            }
-                        }
-                        if (layer.turn == 1) {
-                            switch (i) {
-                                case 0 :
-                                    if(layer.giraffe===0){
-                                        layer.panda = null;
-                                    }
-                                    else{
-                                        layer.panda = 0;
-                                    }
-                                    break;
-                                case 1 :
-                                    if(layer.giraffe1===1){
-                                        layer.panda1 = null;
-                                    }
-                                    else{
-                                        layer.panda1 = 1;
-                                    }
-                                    break;
-                                case 2 :
-                                    if(layer.giraffe2===2){
-                                        layer.panda2 = null;
-                                    }
-                                    else{
-                                        layer.panda2 = 2;
-                                    }
-                                    break;
-                                case 3 :
-                                    if(layer.giraffe3===3){
-                                        layer.panda3 = null;
-                                    }
-                                    else{
-                                        layer.panda3 = 3;
-                                    }
-                                    break;
-                                case 4 :
-                                    if(layer.giraffe4===4){
-                                        layer.panda4 = null;
-                                    }
-                                    else{
-                                        layer.panda4 = 4;
-                                    }
-                                    break;
-                                case 5 :
-                                    if(layer.giraffe5===5){
-                                        layer.panda5 = null;
-                                    }
-                                    else{
-                                        layer.panda5 = 5;
-                                    }
-                                    break;
-                                case 6 :
-                                    if(layer.giraffe6===6){
-                                        layer.panda6 = null;
-                                    }
-                                    else{
-                                        layer.panda6 = 6;
-                                    }
-                                    break;
-                                case 7 :
-                                    if(layer.giraffe7===7){
-                                        layer.panda7 = null;
-                                    }
-                                    else{
-                                        layer.panda7 = 7;
-                                    }
-
-                                    break;
-                                case 8 :
-                                    if(layer.giraffe8===8){
-                                        layer.panda8 = null;
-                                    }
-                                    else {
-                                        layer.panda8 = 8;
-
-                                    }
-
-                                    break;
-
-
-                            }
-
-                        }
 
 
                         if (!layer.gameOver) {
@@ -369,152 +189,41 @@ var item1Layer = cc.Layer.extend({
                                 playRound(layer.imgrect[i], layer);
                                 layer.isClick[i] = true;
 
-
-                                    //長頸鹿判斷
-
-                                    if (layer.giraffe === 0 && layer.giraffe1 === 1
-                                        && layer.giraffe2 === 2) {
-                                        alert("giraffe贏了");
-                                        layer.gameOver = true;
-                                        layer.deuceCheck=false;
-                                        layer.giraffewin.setVisible(true);
-                                    }
-
-
-
-                                if (layer.giraffe3===3&&layer.giraffe4===4&&layer.giraffe5===5) {
-                                    alert("giraffe贏了");
-                                    layer.gameOver = true;
-                                    layer.deuceCheck=false;
-                                    layer.giraffewin.setVisible(true);
+                                if (layer.turn === 0 && layer.array[i]==='') {
+                                    layer.array[i]='X';
+                                    cc.log('這時候是熊貓'+layer.array)
                                 }
-                                    if (layer.giraffe6 === 6 && layer.giraffe7 === 7
-                                        && layer.giraffe8 === 8
-                                    ) {
-                                        alert("giraffe贏了");
-                                        layer.gameOver = true;
-                                        layer.deuceCheck=false;
-                                        layer.giraffewin.setVisible(true);
-                                    }
+                                else if(layer.turn === 1&&layer.array[i]===''){
+                                    layer.array[i]='O';
+                                    cc.log('這時候是長頸鹿'+layer.array)
+                                }
+                                if((layer.array[0]==='O'&&layer.array[1]==='O'&&layer.array[2]==='O')
+                                    ||(layer.array[3]==='O'&&layer.array[4]==='O'&&layer.array[5]==='O')
+                                    ||(layer.array[6]==='O'&&layer.array[7]==='O'&&layer.array[8]==='O')
+                                    ||(layer.array[0]==='O'&&layer.array[4]==='O'&&layer.array[8]==='O')
+                                    ||(layer.array[2]==='O'&&layer.array[4]==='O'&&layer.array[6]==='O')
+                                    ||(layer.array[0]==='O'&&layer.array[3]==='O'&&layer.array[6]==='O')
+                                    ||(layer.array[1]==='O'&&layer.array[4]==='O'&&layer.array[7]==='O')
+                                    ||(layer.array[2]==='O'&&layer.array[5]==='O'&&layer.array[8]==='O')
+                                ){
+                                    alert("長頸鹿贏了");
+                                    layer.giraffewin.setVisible(true);
+                                    layer.gameOver=true;
+                                }
+                                else if((layer.array[0]==='X'&&layer.array[1]==='X'&&layer.array[2]==='X')
+                                    ||(layer.array[3]==='X'&&layer.array[4]==='X'&&layer.array[5]==='X')
+                                    ||(layer.array[6]==='X'&&layer.array[7]==='X'&&layer.array[8]==='X')
+                                    ||(layer.array[0]==='X'&&layer.array[4]==='X'&&layer.array[8]==='X')
+                                    ||(layer.array[2]==='X'&&layer.array[4]==='X'&&layer.array[6]==='X')
+                                    ||(layer.array[0]==='X'&&layer.array[3]==='X'&&layer.array[6]==='X')
+                                    ||(layer.array[1]==='X'&&layer.array[4]==='X'&&layer.array[7]==='X')
+                                    ||(layer.array[2]==='X'&&layer.array[5]==='X'&&layer.array[8]==='X')
+                                ){
+                                    alert("熊貓贏了");
+                                    layer.pandawin.setVisible(true);
+                                    layer.gameOver=true;
+                                }
 
-                                    //斜對角
-                                    if (layer.giraffe === 0 && layer.giraffe4 === 4
-                                        && layer.giraffe8 === 8
-                                    ) {
-                                        alert("giraffe贏了");
-                                        layer.gameOver = true;
-                                        layer.deuceCheck=false;
-                                        layer.giraffewin.setVisible(true);
-                                    }
-                                    if (layer.giraffe2 === 2 && layer.giraffe4 === 4
-                                        && layer.giraffe6 === 6
-                                    ) {
-                                        alert("giraffe贏了");
-                                        layer.gameOver = true;
-                                        layer.deuceCheck=false;
-                                        layer.giraffewin.setVisible(true);
-                                    }
-                                    //直條
-                                    if (layer.giraffe === 0 && layer.giraffe3 === 3
-                                        && layer.giraffe6 === 6
-                                    ) {
-                                        alert("giraffe贏了");
-                                        layer.gameOver = true;
-                                        layer.deuceCheck=false;
-                                        layer.giraffewin.setVisible(true);
-                                    }
-
-                                    if (layer.giraffe1 === 1 && layer.giraffe4 === 4
-                                        && layer.giraffe7 === 7
-                                    ) {
-                                        alert("giraffe贏了");
-                                        layer.gameOver = true;
-                                        layer.deuceCheck=false;
-                                        layer.giraffewin.setVisible(true);
-                                    }
-
-                                    if (layer.giraffe2 === 2 && layer.giraffe5 === 5
-                                        && layer.giraffe8 === 8
-                                    ) {
-                                        alert("giraffe贏了");
-                                        layer.gameOver = true;
-                                        layer.deuceCheck=false;
-                                        layer.giraffewin.setVisible(true);
-                                    }
-                                    // -------------------熊貓判斷---------------------
-
-                                    if (layer.panda === 0 && layer.panda1 === 1
-                                        && layer.panda2 === 2
-                                    ) {
-                                        alert("panda贏了");
-                                        layer.gameOver = true;
-                                        layer.deuceCheck=false;
-                                        layer.pandawin.setVisible(true);
-                                    }
-                                    if (layer.panda3 === 3 && layer.panda4 === 4
-                                        && layer.panda5 === 5
-                                    ) {
-                                        alert("panda贏了");
-                                        layer.gameOver = true;
-                                        layer.deuceCheck=false;
-                                        layer.pandawin.setVisible(true);
-                                    }
-                                    if (layer.panda6 === 6 && layer.panda7 === 7
-                                        && layer.panda8 === 8
-                                    ) {
-                                        alert("panda贏了");
-                                        layer.gameOver = true;
-                                        layer.deuceCheck=false;
-                                        layer.pandawin.setVisible(true);
-                                    }
-
-
-                                    //斜對角
-
-                                    if (layer.panda === 0 && layer.panda4 === 4
-                                        && layer.panda8 === 8
-                                    ) {
-                                        alert("panda贏了");
-                                        layer.gameOver = true;
-                                        layer.deuceCheck=false;
-                                        layer.pandawin.setVisible(true);
-                                    }
-                                    if (layer.panda2 === 2 && layer.panda4 === 4
-                                        && layer.panda6 === 6
-                                    ) {
-                                        alert("panda贏了");
-                                        layer.gameOver = true;
-                                        layer.deuceCheck=false;
-                                        layer.pandawin.setVisible(true);
-                                    }
-
-                                    //直條
-
-                                    if (layer.panda === 0 && layer.panda3 === 3
-                                        && layer.panda6 === 6
-                                    ) {
-                                        alert("panda贏了");
-                                        layer.gameOver = true;
-                                        layer.deuceCheck=false;
-                                        layer.pandawin.setVisible(true);
-                                    }
-                                    if (layer.panda1 === 1 && layer.panda4 === 4
-                                        && layer.panda7 === 7
-                                    ) {
-                                        alert("panda贏了");
-                                        layer.gameOver = true;
-                                        layer.deuceCheck=false;
-                                        layer.pandawin.setVisible(true);
-                                    }
-                                    if (layer.panda2 === 2 && layer.panda5 === 5
-                                        && layer.panda8 === 8
-                                    ) {
-                                        alert("panda贏了");
-                                        layer.gameOver = true;
-                                        layer.deuceCheck=false;
-                                        layer.pandawin.setVisible(true);
-
-                                    }
                             }
                             else{
                                 alert("這格被點過了");
@@ -522,15 +231,15 @@ var item1Layer = cc.Layer.extend({
 
                             }
                         }
-                       else{
-                           //贏了之後會進入gameOver=true;
+                        else{
+                            //贏了之後會進入gameOver=true;
                             //然後因為上面的判斷(!gameOver)就不符合了
                             // 轉跳到這裡顯示結束
-                                alert("遊戲結束");
+                            alert("遊戲結束");
                         }
 
 
-                            }
+                    }
 
 
                 }
@@ -559,24 +268,7 @@ var item1Layer = cc.Layer.extend({
         layer.img2=null;
         layer.turn=0;
         layer.gameOver=false;
-        layer.giraffe=null;
-        layer.giraffe1=null;
-        layer.giraffe2=null;
-        layer.giraffe3=null;
-        layer.giraffe4=null;
-        layer.giraffe5=null;
-        layer.giraffe6=null;
-        layer.giraffe7=null;
-        layer.giraffe8=null;
-        layer.panda=null;
-        layer.panda1=null;
-        layer.panda2=null;
-        layer.panda3=null;
-        layer.panda4=null;
-        layer.panda5=null;
-        layer.panda6=null;
-        layer.panda7=null;
-        layer.panda8=null;
+        layer.array=['','','','','','','','',''];
         layer.drawSegment();
 
 
@@ -608,6 +300,7 @@ function playRound(objDest,layer){
 
     else if(layer.turn==1) {
         layer.img2 = new cc.Sprite(res.panda_png);
+        layer.img2.x = objDest.x + objDest.width / 2;
         layer.img2.x = objDest.x + objDest.width / 2;
         layer.img2.y = objDest.y + objDest.height / 2;
         layer.addChild(layer.img2);
